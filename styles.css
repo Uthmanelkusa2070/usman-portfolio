@@ -1,0 +1,383 @@
+:root {
+  --bg: #0d1117;
+  --surface: rgba(17, 24, 34, 0.78);
+  --surface-strong: #111927;
+  --ink: #f4efe8;
+  --muted: #a5b1c2;
+  --line: rgba(255, 242, 224, 0.12);
+  --accent: #d47b49;
+  --accent-strong: #efb07a;
+  --shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: "Space Grotesk", sans-serif;
+  color: var(--ink);
+  background:
+    radial-gradient(circle at top left, rgba(212, 123, 73, 0.18), transparent 26%),
+    radial-gradient(circle at right 18%, rgba(239, 176, 122, 0.12), transparent 22%),
+    linear-gradient(180deg, #111723 0%, var(--bg) 100%);
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(255, 244, 230, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 244, 230, 0.03) 1px, transparent 1px);
+  background-size: 30px 30px;
+  mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.8), transparent);
+}
+
+.page-shell {
+  width: min(1120px, calc(100% - 2rem));
+  margin: 0 auto;
+  padding-bottom: 4rem;
+}
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.25rem 0;
+  backdrop-filter: blur(12px);
+}
+
+.brand,
+.site-nav a {
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.brand {
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+.site-nav {
+  display: flex;
+  gap: 1.25rem;
+}
+
+.site-nav a {
+  color: var(--muted);
+}
+
+.site-nav a:hover,
+.site-nav a:focus-visible {
+  color: var(--ink);
+}
+
+.hero {
+  display: grid;
+  grid-template-columns: 1.3fr 0.9fr;
+  gap: 1.5rem;
+  align-items: end;
+  padding: 4rem 0 2rem;
+}
+
+.hero-side {
+  display: grid;
+  gap: 1rem;
+}
+
+.hero-copy,
+.hero-card,
+.panel,
+.project-card,
+.contact-panel,
+.timeline-item,
+.skill-card,
+.research-panel {
+  border: 1px solid var(--line);
+  border-radius: 28px;
+  background: var(--surface);
+  backdrop-filter: blur(14px);
+  box-shadow: var(--shadow);
+}
+
+.hero-copy {
+  padding: 3rem;
+}
+
+.eyebrow,
+.card-label,
+.project-tag {
+  display: inline-block;
+  margin: 0 0 1rem;
+  color: var(--accent-strong);
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-size: 0.78rem;
+}
+
+h1,
+h2,
+h3 {
+  margin: 0;
+  font-family: "Fraunces", serif;
+  font-weight: 700;
+  line-height: 0.95;
+}
+
+h1 {
+  font-size: clamp(3rem, 8vw, 6.2rem);
+  max-width: 10ch;
+}
+
+h2 {
+  font-size: clamp(2rem, 4vw, 3.4rem);
+  max-width: 13ch;
+}
+
+h3 {
+  font-size: 1.6rem;
+  margin-bottom: 0.75rem;
+}
+
+p,
+li,
+a {
+  line-height: 1.6;
+  font-size: 1rem;
+}
+
+.hero-text {
+  max-width: 52ch;
+  margin: 1.5rem 0 0;
+  color: var(--muted);
+}
+
+.hero-meta {
+  margin: 1rem 0 0;
+  color: var(--accent-strong);
+}
+
+.hero-actions {
+  display: flex;
+  gap: 0.9rem;
+  flex-wrap: wrap;
+  margin-top: 2rem;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 3rem;
+  padding: 0.8rem 1.2rem;
+  border-radius: 999px;
+  text-decoration: none;
+  transition: transform 180ms ease, background 180ms ease, color 180ms ease;
+}
+
+.button:hover {
+  transform: translateY(-2px);
+}
+
+.button-primary {
+  background: var(--accent);
+  color: #140d09;
+}
+
+.button-secondary {
+  background: transparent;
+  color: var(--ink);
+  border: 1px solid var(--line);
+}
+
+.hero-card,
+.contact-panel {
+  padding: 2rem;
+}
+
+.profile-frame {
+  position: relative;
+  overflow: hidden;
+  min-height: 420px;
+  border: 1px solid var(--line);
+  border-radius: 28px;
+  background:
+    linear-gradient(180deg, rgba(212, 123, 73, 0.16), rgba(17, 24, 34, 0.92)),
+    var(--surface-strong);
+  box-shadow: var(--shadow);
+}
+
+.profile-frame::after {
+  content: "Profile photo";
+  position: absolute;
+  left: 1rem;
+  bottom: 1rem;
+  padding: 0.35rem 0.7rem;
+  border-radius: 999px;
+  background: rgba(13, 17, 23, 0.7);
+  color: var(--accent-strong);
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.profile-frame.is-empty::before {
+  content: "Add profile-photo.jpg to C:\\codex";
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: 2rem;
+  color: var(--muted);
+  text-align: center;
+}
+
+.profile-photo {
+  width: 100%;
+  height: 100%;
+  min-height: 420px;
+  display: block;
+  object-fit: cover;
+  object-position: center top;
+}
+
+.fact-list {
+  padding-left: 1.25rem;
+  color: var(--muted);
+}
+
+.section {
+  padding: 3rem 0 0;
+}
+
+.section-heading {
+  margin-bottom: 1.5rem;
+}
+
+.intro-panels,
+.project-grid,
+.skill-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+.panel,
+.project-card,
+.skill-card {
+  padding: 1.5rem;
+}
+
+.panel p,
+.project-card p,
+.contact-panel p,
+.skill-card p,
+.research-panel p,
+.timeline-item p {
+  color: var(--muted);
+}
+
+.panel.accent {
+  background: linear-gradient(180deg, rgba(212, 123, 73, 0.16), rgba(17, 24, 34, 0.92));
+}
+
+.contact-section {
+  padding-top: 4rem;
+}
+
+.contact-panel {
+  display: grid;
+  gap: 1rem;
+  justify-items: start;
+}
+
+.contact-actions {
+  display: flex;
+  gap: 0.9rem;
+  flex-wrap: wrap;
+}
+
+.timeline {
+  display: grid;
+  gap: 1rem;
+}
+
+.timeline-item {
+  display: grid;
+  grid-template-columns: 150px 1fr;
+  gap: 1rem;
+  padding: 1.5rem;
+}
+
+.timeline-year {
+  color: var(--accent-strong);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.research-panel {
+  padding: 1.75rem;
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 700ms ease, transform 700ms ease;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 900px) {
+  .hero,
+  .intro-panels,
+  .project-grid,
+  .skill-grid,
+  .timeline-item {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-copy {
+    padding: 2rem;
+  }
+
+  .profile-frame,
+  .profile-photo {
+    min-height: 360px;
+  }
+}
+
+@media (max-width: 640px) {
+  .page-shell {
+    width: min(100% - 1.25rem, 100%);
+  }
+
+  .site-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+
+  .site-nav {
+    gap: 0.9rem;
+    flex-wrap: wrap;
+  }
+
+  h1 {
+    font-size: clamp(2.6rem, 15vw, 4rem);
+  }
+}
